@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 'parkflow', number: '01', category: 'SYSTEMS ENGINEERING', year: '2025', title: 'ParkFlow Kenya', subtitle: 'Automated Smart Parking Management System',
-    description: 'A digital parking management system covering parking spaces, vehicle registration, parking sessions, payments, receipts, and operational reporting.', image: '/assets/image.png',
+    description: 'A digital parking management system covering parking spaces, vehicle registration, parking sessions, payments, receipts, and operational reporting.', image: '/assets/image.png', imageAlt: 'Parking management dashboard showing parking bay availability and vehicle sessions.', imageWidth: 1894, imageHeight: 1000,
     tags: ['Python', 'JavaScript', 'SQL', 'Web technologies'],
     challenge: 'Parking operations depend on accurate information about spaces, arrivals, active sessions, and payments. Disconnected records slow down attendants and make day-to-day reporting difficult.',
     solution: 'ParkFlow brings the core parking workflow into a single digital system: register a vehicle, open and track a parking session, record payment, issue a receipt, and review activity through operational reporting.',
@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: 'neolife', number: '02', category: 'PRODUCT ENGINEERING', year: '2025', title: 'NeoLife International Startups', subtitle: 'E-commerce platform for product management and sales',
-    description: 'An e-commerce platform for presenting and managing NeoLife products online, with an admin surface for catalogue control and cloud-backed product media.', image: '/assets/neolifeinternational%20startups.png',
+    description: 'An e-commerce platform for presenting and managing NeoLife products online, with an admin surface for catalogue control and cloud-backed product media.', image: '/assets/neolifeinternational%20startups.png', imageAlt: 'NeoLife International Startups online storefront featuring a Super 10 product.', imageWidth: 1897, imageHeight: 994,
     tags: ['React', 'Vite', 'JavaScript', 'Node.js', 'Express', 'Supabase', 'Cloudinary'],
     challenge: 'The online product catalogue needed a clear storefront for customers and a convenient management workflow for keeping product information and images up to date.',
     solution: 'Built a React storefront and administration surface backed by an Express API and Supabase. Product media is delivered through Cloudinary, keeping imagery management part of the product workflow.',
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     id: 'jasiri', number: '03', category: 'PRODUCT DEVELOPMENT', year: '2026', title: 'Jasiri Web Studios', subtitle: 'In development',
-    description: 'An in-progress product exploring practical digital tooling for local businesses. Case-study material will be published as the build progresses.', image: '/assets/jasiri web studios.png',
+    description: 'An in-progress product exploring practical digital tooling for local businesses. Case-study material will be published as the build progresses.', image: '/assets/jasiri web studios.png', imageAlt: 'Jasiri Web Studios website homepage with service information and a project inquiry link.', imageWidth: 1902, imageHeight: 985,
     tags: ['React', 'Node.js', 'Supabase'],
     challenge: 'Local businesses need digital tools shaped around how their teams work and the practical realities of their operations.',
     solution: 'Jasiri Web Studios is an in-progress product exploring a focused set of digital tools through an iterative product-development process.',
@@ -113,7 +113,7 @@ function Header() {
   }, []);
   return <>
     <header className={`site-header ${scrolled ? 'site-header-scrolled' : ''}`}><Brand /><nav className="desktop-nav" aria-label="Main navigation">{pageLinks.map(([number, label, href]) => <a className={active === href ? 'active' : ''} aria-current={active === href ? 'location' : undefined} href={href} key={href}><span>{number}</span>{label}</a>)}</nav><button className="menu-toggle" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>{open ? <X /> : <Menu />}</button></header>
-    <nav className={`menu-overlay ${open ? 'is-open' : ''}`} aria-hidden={!open}>
+    <nav className={`menu-overlay ${open ? 'is-open' : ''}`} aria-hidden={!open} inert={!open}>
       <div className="menu-inner"><div className="eyebrow">ON THIS PAGE</div>
         {pageLinks.map(([num, label, href]) => <a className="menu-link" key={href} href={href} onClick={close}><span className="menu-number">{num}</span><span>{label === 'Work' ? 'Selected work' : label}</span><ArrowUpRight size={25} /></a>)}
         <a className="menu-email" href="mailto:alexmwangi9999@gmail.com">alexmwangi9999@gmail.com <ArrowUpRight size={15} /></a>
@@ -123,15 +123,15 @@ function Header() {
 }
 
 function SectionMarker({ number, children, aside }) {
-  return <div className="section-marker"><span><i>{number}</i><span className="marker-divider" />{children}</span>{aside && <span className="marker-aside">{aside}</span>}</div>;
+  return <header className="section-marker"><span><i>{number}</i><span className="marker-divider" />{children}</span>{aside && <span className="marker-aside">{aside}</span>}</header>;
 }
 
 function Hero() {
-  return <section id="top" className="hero">
+  return <section id="top" className="hero" aria-labelledby="hero-title">
     <div className="hero-bg" /><div className="hero-grid" />
     <div className="hero-inner">
       <div className="hero-index"><span>SOFTWARE ENGINEER</span><span>BASED IN KENYA <i>↘</i></span></div>
-      <h1><span>ALEX</span> MWANGI<span className="hero-period">.</span></h1>
+      <h1 id="hero-title"><span>ALEX</span> MWANGI<span className="hero-period">.</span></h1>
       <div className="hero-bottom"><div className="hero-copy"><div className="eyebrow hero-role">FULL-STACK DEVELOPER <span>/</span> SOFTWARE ENGINEER</div>
         <p>I build digital products, intelligent systems, and experiences that turn ideas into working software.</p>
       </div><div className="hero-actions"><a className="button button-primary" href="#projects">View projects <ArrowDownRight size={15} /></a><a className="button button-outline" href="#contact">Let's work together <ArrowUpRight size={15} /></a></div></div>
@@ -142,8 +142,8 @@ function Hero() {
 
 function About() {
   const items = ['Frontend', 'Backend', 'Databases', 'APIs', 'Authentication', 'Cloud services', 'Product interfaces'];
-  return <section className="section about-section" id="about"><SectionMarker number="01">THE WAY I THINK</SectionMarker>
-    <div className="about-grid"><div className="about-title"><div className="eyebrow">MORE THAN THE INTERFACE</div><h2>I don't just build<br />websites. I build <span>systems.</span></h2></div>
+  return <section className="section about-section" id="about" aria-labelledby="about-title"><SectionMarker number="01">THE WAY I THINK</SectionMarker>
+    <div className="about-grid"><div className="about-title"><div className="eyebrow">MORE THAN THE INTERFACE</div><h2 id="about-title">I don't just build<br />websites. I build <span>systems.</span></h2></div>
       <div className="about-copy"><span className="about-star">✳</span><p>I work across the full stack — from the interface a person touches to the data model underneath it — and I care most about the seams where those layers meet.</p><p className="about-note">A thoughtful, end-to-end approach to software: clear interfaces, dependable systems, and details that hold up in use.</p></div>
     </div>
     <div className="discipline-row"><span className="eyebrow">WHERE I WORK</span><div className="discipline-list">{items.map((item, i) => <span className="discipline" key={item}><span className="discipline-index">0{i + 1}</span>{item}<span className="discipline-mark">↗</span></span>)}</div></div>
@@ -161,7 +161,7 @@ function CaseStudy({ project, onClose, onNext, onPrev }) {
   return <div className="case-overlay" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
     <article className="case-panel" role="dialog" aria-modal="true" aria-labelledby="case-title">
       <div className="case-topbar"><span className="eyebrow">SELECTED WORK <span className="case-dot">●</span> {project.number} / 03</span><button className="icon-button" onClick={onClose} aria-label="Close case study"><X size={19} /></button></div>
-      <div className="case-scroll"><div className={`case-art ${!project.image ? 'case-art-empty' : ''}`}>{project.image ? <img src={project.image} alt={`${project.title} project interface`} /> : <div className="case-art-placeholder"><span>IN DEVELOPMENT</span><Layers3 size={44} /></div>}<span className="case-art-caption">{project.category} <span>—</span> {project.year}</span></div>
+      <div className="case-scroll"><div className={`case-art ${!project.image ? 'case-art-empty' : ''}`}>{project.image ? <img src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight} decoding="async" /> : <div className="case-art-placeholder"><span>IN DEVELOPMENT</span><Layers3 size={44} /></div>}<span className="case-art-caption">{project.category} <span>—</span> {project.year}</span></div>
         <div className="case-heading-row"><div><div className="eyebrow">{project.category} / {project.year}</div><h2 id="case-title">{project.title}<span>.</span></h2><p className="case-subtitle">{project.subtitle}</p></div><div className="case-counter">{project.number}<span> / 03</span></div></div>
         <div className="case-description">{project.description}</div>
         <div className="case-story"><div className="story-block"><span className="story-index">01</span><div><h3>The challenge</h3><p>{project.challenge}</p></div></div><div className="story-block"><span className="story-index">02</span><div><h3>The approach</h3><p>{project.solution}</p></div></div><div className="story-block"><span className="story-index">03</span><div><h3>The result</h3><p>{project.outcome}</p></div></div></div>
@@ -178,10 +178,10 @@ function Projects() {
   const change = (direction) => setActive((current) => { const i = projects.findIndex((project) => project.id === current); return projects[(i + direction + projects.length) % projects.length].id; });
   const close = () => setActive(null);
   const current = projects.find((project) => project.id === active);
-  return <section id="projects" className="section projects-section"><SectionMarker number="02">A FEW THINGS I'VE MADE</SectionMarker>
-    <div className="projects-heading"><div><div className="eyebrow">THOUGHTFULLY BUILT, MADE TO WORK</div><h2>Selected <span>work.</span></h2></div><p>Digital products and systems built around real people, real workflows, and the details that make the difference.</p></div>
+  return <section id="projects" className="section projects-section" aria-labelledby="projects-title"><SectionMarker number="02">A FEW THINGS I'VE MADE</SectionMarker>
+    <div className="projects-heading"><div><div className="eyebrow">THOUGHTFULLY BUILT, MADE TO WORK</div><h2 id="projects-title">Selected <span>work.</span></h2></div><p>Digital products and systems built around real people, real workflows, and the details that make the difference.</p></div>
     <div className="project-list">{projects.map((project) => <article className="project-card" key={project.id}>
-      <button className="project-visual" onClick={() => select(project.id)} aria-label={`Open ${project.title} case study`}><div className={`project-image ${project.image ? '' : 'project-image-empty'}`}>{project.image ? <img src={project.image} alt={`${project.title} project interface`} loading="lazy" /> : <div className="project-soon"><span>MEDIA COMING SOON</span><Layers3 size={42} /><span>JASIRI / 2026</span></div>}</div><span className="visual-topline"><span>AM / WORK—{project.number}</span><span>↗</span></span><span className="visual-open"><span>VIEW CASE STUDY</span><ArrowUpRight size={14} /></span><span className="project-image-shade" /></button>
+      <button className="project-visual" onClick={() => select(project.id)} aria-label={`Open ${project.title} case study`}><div className={`project-image ${project.image ? '' : 'project-image-empty'}`}>{project.image ? <img src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight} decoding="async" loading="lazy" /> : <div className="project-soon"><span>MEDIA COMING SOON</span><Layers3 size={42} /><span>JASIRI / 2026</span></div>}</div><span className="visual-topline"><span>AM / WORK—{project.number}</span><span>↗</span></span><span className="visual-open"><span>VIEW CASE STUDY</span><ArrowUpRight size={14} /></span><span className="project-image-shade" /></button>
       <div className="project-info"><div className="project-meta"><span><i>{project.number}</i> / {project.category}</span><span>{project.year}</span></div><button className="project-title-button" onClick={() => select(project.id)}><h3>{project.title}</h3><ArrowUpRight size={20} /></button><div className="project-subtitle">{project.subtitle}</div><p className="project-description">{project.description}</p><div className="project-bottom"><div className="tag-list">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div><button className="text-link" onClick={() => select(project.id)}>EXPLORE PROJECT <ArrowUpRight size={13} /></button></div></div>
     </article>)}</div>
     {current && <CaseStudy project={current} onClose={close} onNext={() => change(1)} onPrev={() => change(-1)} />}
@@ -199,8 +199,8 @@ function Services() {
     ['07', 'SEO', 'Technical SEO foundations and on-page improvements to help search engines understand and surface your website.', 'TECHNICAL · ON-PAGE'],
     ['08', 'Ongoing improvements', 'Post-launch refinements, new features, and technical upkeep to help a product keep pace with its users.', 'ITERATION · SUPPORT']
   ];
-  return <section id="services" className="section services-section"><SectionMarker number="03">WAYS I CAN HELP</SectionMarker>
-    <div className="services-heading"><div><div className="eyebrow">WHAT I CAN BUILD WITH YOU</div><h2>Services<span>.</span></h2></div><p>From the first screen to the systems behind it, I help turn practical ideas into dependable digital products.</p></div>
+  return <section id="services" className="section services-section" aria-labelledby="services-title"><SectionMarker number="03">WAYS I CAN HELP</SectionMarker>
+    <div className="services-heading"><div><div className="eyebrow">WHAT I CAN BUILD WITH YOU</div><h2 id="services-title">Services<span>.</span></h2></div><p>From the first screen to the systems behind it, I help turn practical ideas into dependable digital products.</p></div>
     <div className="services-grid">{offerings.map(([number, title, description, scope]) => <a className="service-card" href="#contact-form" key={number}><div className="service-card-top"><span>{number} <i>—</i> {scope}</span><ArrowUpRight size={17} /></div><h3>{title}</h3><p>{description}</p><div className="service-card-link"><span>LET'S DISCUSS YOUR PROJECT</span><span>↗</span></div></a>)}</div>
     <div className="services-foot"><span className="status-dot" /> AVAILABLE FOR SELECT PROJECTS <span className="services-foot-line" /> <a href="#contact-form">TELL ME WHAT YOU HAVE IN MIND <ArrowDownRight size={14} /></a></div>
   </section>;
@@ -209,8 +209,8 @@ function Services() {
 function Technology() {
   const [active, setActive] = useState('React');
   const activeTech = technologies.find((tech) => tech.name === active);
-  return <section className="section tech-section" id="technology"><SectionMarker number="04">THE TOOLS BEHIND THE WORK</SectionMarker>
-    <div className="tech-heading"><div><div className="eyebrow">WHAT I BUILD WITH</div><h2>Technology<span>.</span></h2></div><div className="tech-note"><Code2 size={17} /><span>THE RIGHT TOOL FOR THE RIGHT JOB.</span></div></div>
+  return <section className="section tech-section" id="technology" aria-labelledby="technology-title"><SectionMarker number="04">THE TOOLS BEHIND THE WORK</SectionMarker>
+    <div className="tech-heading"><div><div className="eyebrow">WHAT I BUILD WITH</div><h2 id="technology-title">Technology<span>.</span></h2></div><div className="tech-note"><Code2 size={17} /><span>THE RIGHT TOOL FOR THE RIGHT JOB.</span></div></div>
     <div className="tech-layout"><div className="tech-groups">{[
       { title: '01 / FRONTEND', items: technologies.slice(0, 5) }, { title: '02 / BACKEND', items: technologies.slice(5, 9) }, { title: '03 / DATA & CLOUD', items: technologies.slice(9, 14) }, { title: '04 / WORKFLOW', items: technologies.slice(14) }
     ].map((group) => <div className="tech-group" key={group.title}><div className="eyebrow tech-group-title">{group.title}</div><div className="tech-chips">{group.items.map((tech) => <button key={tech.name} className={`tech-chip ${active === tech.name ? 'is-active' : ''}`} onMouseEnter={() => setActive(tech.name)} onFocus={() => setActive(tech.name)} onClick={() => setActive(tech.name)} aria-pressed={active === tech.name}>{tech.name}<ArrowUpRight size={12} /></button>)}</div></div>)}</div>
@@ -220,21 +220,21 @@ function Technology() {
 }
 
 function Experience() {
-  return <section id="experience" className="section experience-section"><SectionMarker number="05">WHERE THE WORK HAPPENED</SectionMarker>
-    <div className="experience-heading"><div><div className="eyebrow">THE PATH SO FAR</div><h2>Experience<span>.</span></h2></div><div className="experience-aside"><span className="status-dot" />OPEN TO OPPORTUNITIES &amp; COLLABORATIONS</div></div>
+  return <section id="experience" className="section experience-section" aria-labelledby="experience-title"><SectionMarker number="05">WHERE THE WORK HAPPENED</SectionMarker>
+    <div className="experience-heading"><div><div className="eyebrow">THE PATH SO FAR</div><h2 id="experience-title">Experience<span>.</span></h2></div><div className="experience-aside"><span className="status-dot" />OPEN TO OPPORTUNITIES &amp; COLLABORATIONS</div></div>
     <div className="timeline">{experience.map((item, i) => <article className="timeline-item" key={item.role}><div className="timeline-marker"><span>0{i + 1}</span><i /></div><div className="timeline-dates">{item.dates}</div><div className="timeline-content"><div><h3>{item.role}</h3><div className="timeline-company">{item.company}</div></div><p>{item.description}</p></div><span className="timeline-arrow">↗</span></article>)}</div>
   </section>;
 }
 
 function Process() {
-  return <section id="process" className="section process-section"><SectionMarker number="06">FROM FIRST QUESTION TO FIRST RELEASE</SectionMarker>
-    <div className="process-heading"><div><div className="eyebrow">HOW A BUILD MOVES</div><h2>Thoughtful at<br />every <span>step.</span></h2></div><p>Good software grows from a thoughtful process: understanding what matters, making the work visible, and staying open to what you learn along the way.</p></div>
+  return <section id="process" className="section process-section" aria-labelledby="process-title"><SectionMarker number="06">FROM FIRST QUESTION TO FIRST RELEASE</SectionMarker>
+    <div className="process-heading"><div><div className="eyebrow">HOW A BUILD MOVES</div><h2 id="process-title">Thoughtful at<br />every <span>step.</span></h2></div><p>Good software grows from a thoughtful process: understanding what matters, making the work visible, and staying open to what you learn along the way.</p></div>
     <div className="process-track">{process.map(([name, description], i) => <article className="process-step" key={name}><div className="step-top"><span>0{i + 1}</span><ArrowUpRight size={15} /></div><div className="step-marker"><span /></div><h3>{name}<span>.</span></h3><p>{description}</p></article>)}</div>
   </section>;
 }
 
 function CodeNote() {
-  return <section className="code-note"><div className="code-note-bg" /><div className="code-note-main"><div className="eyebrow"><span className="online-mark" /> BACKED BY REAL CODE</div><h2>Every project here exists<br />as a <span>repository,</span><br />not a mockup.</h2><p>Commits, branches, and issues are part of how I work. The source is the honest version of a portfolio — read it if you want to see how these systems are actually put together.</p><a className="button button-outline code-link" href="https://github.com/mal161" target="_blank" rel="noreferrer">Explore the code <GithubMark size={16} /><ArrowUpRight size={13} /></a></div><div className="code-note-side"><div className="repo-chip"><span className="repo-chip-dot" /><span>MAL161 / OPEN SOURCE</span><ArrowUpRight size={13} /></div><div className="code-window"><div className="code-window-bar"><div><i /><i /><i /></div><span>building_something_real.js</span><ArrowUpRight size={13} /></div><pre><span className="code-muted">01</span> <span className="code-keyword">const</span> idea = <span className="code-string">"a real problem"</span>;
+  return <section className="code-note" aria-labelledby="code-note-title"><div className="code-note-bg" /><div className="code-note-main"><div className="eyebrow"><span className="online-mark" /> BACKED BY REAL CODE</div><h2 id="code-note-title">Every project here exists<br />as a <span>repository,</span><br />not a mockup.</h2><p>Commits, branches, and issues are part of how I work. The source is the honest version of a portfolio — read it if you want to see how these systems are actually put together.</p><a className="button button-outline code-link" href="https://github.com/mal161" target="_blank" rel="noreferrer">Explore the code <GithubMark size={16} /><ArrowUpRight size={13} /></a></div><div className="code-note-side"><div className="repo-chip"><span className="repo-chip-dot" /><span>MAL161 / OPEN SOURCE</span><ArrowUpRight size={13} /></div><div className="code-window"><div className="code-window-bar"><div><i /><i /><i /></div><span>building_something_real.js</span><ArrowUpRight size={13} /></div><pre><span className="code-muted">01</span> <span className="code-keyword">const</span> idea = <span className="code-string">"a real problem"</span>;
 <span className="code-muted">02</span> <span className="code-keyword">const</span> work = <span className="code-fn">build</span>(idea);
 <span className="code-muted">03</span>
 <span className="code-muted">04</span> <span className="code-keyword">if</span> (work.<span className="code-prop">ships</span>) {'{'}
@@ -256,10 +256,10 @@ function Contact() {
     setSubmitted(true);
   };
 
-  return <section id="contact" className="contact-section">
+  return <section id="contact" className="contact-section" aria-labelledby="contact-title">
     <SectionMarker number="07">SOMETHING IN MIND?</SectionMarker>
     <div className="contact-main">
-      <div className="contact-head"><div className="eyebrow">THE NEXT GREAT THING STARTS HERE</div><h2>Have an idea?<br /><span>Let's build it.</span></h2></div>
+      <div className="contact-head"><div className="eyebrow">THE NEXT GREAT THING STARTS HERE</div><h2 id="contact-title">Have an idea?<br /><span>Let's build it.</span></h2></div>
       <div className="contact-side"><p>Have a project in mind, a problem that needs solving, or just want to connect? I’d love to hear about it.</p><a className="contact-email" href="mailto:alexmwangi9999@gmail.com">alexmwangi9999@gmail.com <ArrowUpRight size={19} /></a><a className="contact-phone" href="tel:+254768354823"><Phone size={15} /> <span>0768 354 823</span><ArrowUpRight size={15} /></a><div className="contact-links"><a href="https://www.linkedin.com/in/alex-mwangi-b4a2b4316/" target="_blank" rel="noreferrer"><LinkedinMark size={15} /> CONNECT ON LINKEDIN <ExternalLink size={12} /></a><a href="https://github.com/mal161" target="_blank" rel="noreferrer"><GithubMark size={15} /> SEE THE REPOSITORIES <ExternalLink size={12} /></a></div></div>
     </div>
     <a className="whatsapp-cta" href="https://wa.me/254768354823?text=Hi%20Alex%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noreferrer"><span className="whatsapp-icon"><MessageCircle size={22} /></span><span className="whatsapp-copy"><span className="eyebrow">PREFER A QUICK CHAT?</span><strong>Message me on WhatsApp</strong><span>Reach me directly at 0768 354 823</span></span><span className="whatsapp-action">CHAT ON WHATSAPP <ArrowUpRight size={16} /></span></a>
@@ -383,4 +383,3 @@ function App() {
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
-
