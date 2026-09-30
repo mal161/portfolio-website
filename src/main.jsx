@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 'parkflow', number: '01', category: 'SYSTEMS ENGINEERING', year: '2025', title: 'ParkFlow Kenya', subtitle: 'Automated Smart Parking Management System',
-    description: 'A digital parking management system covering parking spaces, vehicle registration, parking sessions, payments, receipts, and operational reporting.', image: '/assets/image.png', imageAlt: 'Parking management dashboard showing parking bay availability and vehicle sessions.', imageWidth: 1894, imageHeight: 1000,
+    description: 'ParkFlow tracks parking spaces, vehicle registration, sessions, payments, receipts, and operational reports in one management system.', image: '/assets/image.png', imageAlt: 'Parking management dashboard showing parking bay availability and vehicle sessions.', imageWidth: 1894, imageHeight: 1000,
     tags: ['Python', 'JavaScript', 'SQL', 'Web technologies'],
     challenge: 'Parking operations depend on accurate information about spaces, arrivals, active sessions, and payments. Disconnected records slow down attendants and make day-to-day reporting difficult.',
     solution: 'ParkFlow brings the core parking workflow into a single digital system: register a vehicle, open and track a parking session, record payment, issue a receipt, and review activity through operational reporting.',
@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: 'neolife', number: '02', category: 'PRODUCT ENGINEERING', year: '2025', title: 'NeoLife International Startups', subtitle: 'E-commerce platform for product management and sales',
-    description: 'An e-commerce platform for presenting and managing NeoLife products online, with an admin surface for catalogue control and cloud-backed product media.', image: '/assets/neolifeinternational%20startups.png', imageAlt: 'NeoLife International Startups online storefront featuring a Super 10 product.', imageWidth: 1897, imageHeight: 994,
+    description: 'I built a React storefront and product-admin workflow, backed by an Express API and Supabase, with product media managed through Cloudinary.', image: '/assets/neolifeinternational%20startups.png', imageAlt: 'NeoLife International Startups online storefront featuring a Super 10 product.', imageWidth: 1897, imageHeight: 994,
     tags: ['React', 'Vite', 'JavaScript', 'Node.js', 'Express', 'Supabase', 'Cloudinary'],
     challenge: 'The online product catalogue needed a clear storefront for customers and a convenient management workflow for keeping product information and images up to date.',
     solution: 'Built a React storefront and administration surface backed by an Express API and Supabase. Product media is delivered through Cloudinary, keeping imagery management part of the product workflow.',
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     id: 'jasiri', number: '03', category: 'PRODUCT DEVELOPMENT', year: '2026', title: 'Jasiri Web Studios', subtitle: 'In development',
-    description: 'An in-progress product exploring practical digital tooling for local businesses. Case-study material will be published as the build progresses.', image: '/assets/jasiri web studios.png', imageAlt: 'Jasiri Web Studios website homepage with service information and a project inquiry link.', imageWidth: 1902, imageHeight: 985,
+    description: 'Jasiri Web Studios is in development. Current work explores a studio services page and project inquiry entry point; more build details will follow as it progresses.', image: '/assets/jasiri web studios.png', imageAlt: 'Jasiri Web Studios website homepage with service information and a project inquiry link.', imageWidth: 1902, imageHeight: 985,
     tags: ['React', 'Node.js', 'Supabase'],
     challenge: 'Local businesses need digital tools shaped around how their teams work and the practical realities of their operations.',
     solution: 'Jasiri Web Studios is an in-progress product exploring a focused set of digital tools through an iterative product-development process.',
@@ -133,7 +133,7 @@ function Hero() {
       <div className="hero-index"><span>SOFTWARE ENGINEER</span><span>BASED IN KENYA <i>↘</i></span></div>
       <h1 id="hero-title"><span>ALEX</span> MWANGI<span className="hero-period">.</span></h1>
       <div className="hero-bottom"><div className="hero-copy"><div className="eyebrow hero-role">FULL-STACK DEVELOPER <span>/</span> SOFTWARE ENGINEER</div>
-        <p>I build digital products, intelligent systems, and experiences that turn ideas into working software.</p>
+        <p>I build web applications and operational systems, from React storefronts and APIs to data-backed workflows.</p>
       </div><div className="hero-actions"><a className="button button-primary" href="#projects">View projects <ArrowDownRight size={15} /></a><a className="button button-outline" href="#contact">Let's work together <ArrowUpRight size={15} /></a></div></div>
       <a className="scroll-cue" href="#about"><span className="scroll-line" /><span>SCROLL TO EXPLORE</span><ArrowDown size={13} /></a>
     </div><div className="hero-vertical">INDEPENDENT DEVELOPER <span>—</span> 2026</div>
@@ -144,7 +144,7 @@ function About() {
   const items = ['Frontend', 'Backend', 'Databases', 'APIs', 'Authentication', 'Cloud services', 'Product interfaces'];
   return <section className="section about-section" id="about" aria-labelledby="about-title"><SectionMarker number="01">THE WAY I THINK</SectionMarker>
     <div className="about-grid"><div className="about-title"><div className="eyebrow">MORE THAN THE INTERFACE</div><h2 id="about-title">I don't just build<br />websites. I build <span>systems.</span></h2></div>
-      <div className="about-copy"><span className="about-star">✳</span><p>I work across the full stack — from the interface a person touches to the data model underneath it — and I care most about the seams where those layers meet.</p><p className="about-note">A thoughtful, end-to-end approach to software: clear interfaces, dependable systems, and details that hold up in use.</p></div>
+      <div className="about-copy"><span className="about-star">✳</span><p>I build across the frontend and backend, connecting user interfaces to APIs, databases, and the workflows people rely on.</p><p className="about-note">My projects include an e-commerce platform and a parking system for managing spaces, sessions, and payments.</p></div>
     </div>
     <div className="discipline-row"><span className="eyebrow">WHERE I WORK</span><div className="discipline-list">{items.map((item, i) => <span className="discipline" key={item}><span className="discipline-index">0{i + 1}</span>{item}<span className="discipline-mark">↗</span></span>)}</div></div>
   </section>;
@@ -179,7 +179,7 @@ function Projects() {
   const close = () => setActive(null);
   const current = projects.find((project) => project.id === active);
   return <section id="projects" className="section projects-section" aria-labelledby="projects-title"><SectionMarker number="02">A FEW THINGS I'VE MADE</SectionMarker>
-    <div className="projects-heading"><div><div className="eyebrow">THOUGHTFULLY BUILT, MADE TO WORK</div><h2 id="projects-title">Selected <span>work.</span></h2></div><p>Digital products and systems built around real people, real workflows, and the details that make the difference.</p></div>
+    <div className="projects-heading"><div><div className="eyebrow">THOUGHTFULLY BUILT, MADE TO WORK</div><h2 id="projects-title">Selected <span>work.</span></h2></div><p>Software projects spanning parking operations, e-commerce, APIs, and product management.</p></div>
     <div className="project-list">{projects.map((project) => <article className="project-card" key={project.id}>
       <button className="project-visual" onClick={() => select(project.id)} aria-label={`Open ${project.title} case study`}><div className={`project-image ${project.image ? '' : 'project-image-empty'}`}>{project.image ? <img src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight} decoding="async" loading="lazy" /> : <div className="project-soon"><span>MEDIA COMING SOON</span><Layers3 size={42} /><span>JASIRI / 2026</span></div>}</div><span className="visual-topline"><span>AM / WORK—{project.number}</span><span>↗</span></span><span className="visual-open"><span>VIEW CASE STUDY</span><ArrowUpRight size={14} /></span><span className="project-image-shade" /></button>
       <div className="project-info"><div className="project-meta"><span><i>{project.number}</i> / {project.category}</span><span>{project.year}</span></div><button className="project-title-button" onClick={() => select(project.id)}><h3>{project.title}</h3><ArrowUpRight size={20} /></button><div className="project-subtitle">{project.subtitle}</div><p className="project-description">{project.description}</p><div className="project-bottom"><div className="tag-list">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div><button className="text-link" onClick={() => select(project.id)}>EXPLORE PROJECT <ArrowUpRight size={13} /></button></div></div>
@@ -228,7 +228,7 @@ function Experience() {
 
 function Process() {
   return <section id="process" className="section process-section" aria-labelledby="process-title"><SectionMarker number="06">FROM FIRST QUESTION TO FIRST RELEASE</SectionMarker>
-    <div className="process-heading"><div><div className="eyebrow">HOW A BUILD MOVES</div><h2 id="process-title">Thoughtful at<br />every <span>step.</span></h2></div><p>Good software grows from a thoughtful process: understanding what matters, making the work visible, and staying open to what you learn along the way.</p></div>
+    <div className="process-heading"><div><div className="eyebrow">HOW A BUILD MOVES</div><h2 id="process-title">Thoughtful at<br />every <span>step.</span></h2></div><p>I start by understanding the workflow, define scope and data, build in reviewable stages, then test and improve the product as I learn.</p></div>
     <div className="process-track">{process.map(([name, description], i) => <article className="process-step" key={name}><div className="step-top"><span>0{i + 1}</span><ArrowUpRight size={15} /></div><div className="step-marker"><span /></div><h3>{name}<span>.</span></h3><p>{description}</p></article>)}</div>
   </section>;
 }
